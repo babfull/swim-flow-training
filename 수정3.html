@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personnel File</title>
+    <link href="https://unpkg.com/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">    <style>
+        /* [스타일] 스타트랙 LCARS 테마 */
+        :root {
+            --bg-color: #000000;
+            --panel-bg: rgba(20, 20, 20, 0.8);
+            
+            /* 섹션 컬러 */
+            --c1: #FF9900; /* 오렌지 (기록) */
+            --c2: #00A3E0; /* 블루 (활동) */
+            --c3: #CC66FF; /* 퍼플 (특별) */
+            
+            --text-main: #FFFFFF;
+            --text-mute: #888888;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 20px 15px;
+            /* 배경 그리드 */
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* 헤더 */
+        header {
+            border-bottom: 2px solid #333;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .header-left h1 { margin: 0; font-size: 1.5rem; letter-spacing: 2px; text-transform: uppercase; }
+        .header-left span { font-size: 0.7rem; color: var(--c2); letter-spacing: 1px; }
+        .header-right { text-align: right; font-size: 0.7rem; color: var(--text-mute); }
+
+        /* 섹션 타이틀바 */
+        .sector-title { display: flex; align-items: center; margin-top: 40px; margin-bottom: 15px; }
+        .sector-bar { height: 25px; width: 15px; border-radius: 15px 0 0 15px; margin-right: 10px; }
+        .sector-text { font-size: 1rem; font-weight: bold; letter-spacing: 1px; }
+        
+        /* 섹션별 컬러 적용 */
+        .s1 .sector-bar, .s1 .sector-text { color: var(--c1); background-color: var(--c1); }
+        .s1 .sector-text { background-color: transparent; }
+        
+        .s2 .sector-bar, .s2 .sector-text { color: var(--c2); background-color: var(--c2); }
+        .s2 .sector-text { background-color: transparent; }
+        
+        .s3 .sector-bar, .s3 .sector-text { color: var(--c3); background-color: var(--c3); }
+        .s3 .sector-text { background-color: transparent; }
+
+        /* 그리드 */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 모바일 2열 */
+            gap: 12px;
+        }
+
+        /* 카드 디자인 */
+        .badge-card {
+            background: var(--panel-bg);
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+        
+        /* 카드 데코 (우측 상단) */
+        .badge-card::after {
+            content: ''; position: absolute; top: 0; right: 0;
+            width: 15px; height: 15px;
+            border-top: 2px solid; border-right: 2px solid; opacity: 0.6;
+        }
+
+        /* 테두리 컬러 */
+        .style-s1::after { border-color: var(--c1); }
+        .style-s2::after { border-color: var(--c2); }
+        .style-s3::after { border-color: var(--c3); }
+
+        /* 아이콘 */
+        .icon-area { font-size: 1.8rem; margin-bottom: 10px; filter: drop-shadow(0 0 5px rgba(255,255,255,0.2)); }
+        .style-s1 .icon-area { color: var(--c1); }
+        .style-s2 .icon-area { color: var(--c2); }
+        .style-s3 .icon-area { color: var(--c3); }
+
+        .b-title { font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; color: #fff; }
+        .b-meta { font-size: 0.65rem; color: var(--text-mute); }
+        
+        footer { margin-top: 50px; text-align: center; font-size: 0.6rem; color: #444; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <span>PERSONNEL FILE</span>
+            <h1>KIM.MEMBER</h1>
+        </div>
+        <div class="header-right">
+            ID: 9402-A<br>
+            RANK: MEMBER
+        </div>
+    </header>
+
+    <div class="sector-title s1">
+        <div class="sector-bar"></div>
+        <span class="sector-text">SEC 01 : PERFORMANCE</span>
+    </div>
+    
+    <div class="grid-container">
+        <div class="badge-card style-s1">
+            <div class="icon-area"><i class="fa-solid fa-person-running"></i></div>
+            <div class="b-title">10K RUN</div>
+            <div class="b-meta">PB 37:00</div>
+        </div>
+        <div class="badge-card style-s1">
+            <div class="icon-area"><i class="fa-solid fa-water"></i></div>
+            <div class="b-title">SWIM 1.5K</div>
+            <div class="b-meta">PACE 1:55</div>
+        </div>
+        <div class="badge-card style-s1">
+            <div class="icon-area"><i class="fa-solid fa-bicycle"></i></div>
+            <div class="b-title">CYCLE 40K</div>
+            <div class="b-meta">AVG 30km/h</div>
+        </div>
+    </div>
+
+
+    <div class="sector-title s2">
+        <div class="sector-bar"></div>
+        <span class="sector-text">SEC 02 : DUTY LOGS</span>
+    </div>
+
+    <div class="grid-container">
+        <div class="badge-card style-s2">
+            <div class="icon-area"><i class="fa-solid fa-sun"></i></div>
+            <div class="b-title">새벽 기상</div>
+            <div class="b-meta">20일 연속</div>
+        </div>
+        <div class="badge-card style-s2">
+            <div class="icon-area"><i class="fa-solid fa-clipboard-check"></i></div>
+            <div class="b-title">팀 훈련</div>
+            <div class="b-meta">100% 출석</div>
+        </div>
+        <div class="badge-card style-s2">
+            <div class="icon-area"><i class="fa-solid fa-leaf"></i></div>
+            <div class="b-title">식단 관리</div>
+            <div class="b-meta">4주 완료</div>
+        </div>
+    </div>
+
+
+    <div class="sector-title s3">
+        <div class="sector-bar"></div>
+        <span class="sector-text">SEC 03 : SPECIAL OPS</span>
+    </div>
+
+    <div class="grid-container">
+        <div class="badge-card style-s3">
+            <div class="icon-area"><i class="fa-solid fa-umbrella-beach"></i></div>
+            <div class="b-title">바다 수영</div>
+            <div class="b-meta">양양 비치</div>
+        </div>
+        <div class="badge-card style-s3">
+            <div class="icon-area"><i class="fa-solid fa-mountain"></i></div>
+            <div class="b-title">산악 러닝</div>
+            <div class="b-meta">북한산</div>
+        </div>
+        <div class="badge-card style-s3">
+            <div class="icon-area"><i class="fa-solid fa-beer"></i></div>
+            <div class="b-title">회식 참석</div>
+            <div class="b-meta">분위기 메이커</div>
+        </div>
+         <div class="badge-card style-s3">
+            <div class="icon-area"><i class="fa-solid fa-user-astronaut"></i></div>
+            <div class="b-title">신입 멘토</div>
+            <div class="b-meta">가이드 완료</div>
+        </div>
+    </div>
+
+    <footer>
+        /// END OF TRANSMISSION ///
+    </footer>
+
+</body>
+</html>
